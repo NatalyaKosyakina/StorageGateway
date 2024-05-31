@@ -1,0 +1,33 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/Market/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7243
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/{method}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "Market"
+    },
+    {
+      "DownstreamPathTemplate": "/StorageL3/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7192
+        }
+      ],
+      "UpstreamPathTemplate": "/StorageL3/{method}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "SwaggerKey": "StorageL3"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl" : "https://localhost:7217"
+  }
+}
