@@ -1,5 +1,6 @@
 
 using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace StorageGateway
 {
@@ -23,11 +24,11 @@ namespace StorageGateway
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            app.UseSwagger();
+            app.UseSwaggerForOcelotUI(opt =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                opt.PathToSwaggerGenerator = "/swagger/docs";
+            }).UseOcelot().Wait();
 
             app.UseHttpsRedirection();
 

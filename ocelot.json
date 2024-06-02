@@ -10,8 +10,21 @@
         }
       ],
       "UpstreamPathTemplate": "/Market/{method}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "SwaggerKey": "Market"
+    },
+    {
+      "DownstreamPathTemplate": "/AuthMarket/{method}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+      "UpstreamPathTemplate": "/AuthMarket/{method}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "SwaggerKey": "AuthMarket"
     },
     {
       "DownstreamPathTemplate": "/StorageL3/{method}",
@@ -23,11 +36,46 @@
         }
       ],
       "UpstreamPathTemplate": "/StorageL3/{method}",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete" ],
       "SwaggerKey": "StorageL3"
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl" : "https://localhost:7217"
-  }
+    "BaseUrl": "https://localhost:7217"
+  },
+  "SwaggerEndPoints": [
+    {
+      "Key": "market",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "Market",
+          "Version": "v1",
+          "Url": "https://localhost:7243/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "authmarket",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "AuthMarket",
+          "Version": "v1",
+          "Url": "https://localhost:7001/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "storagel3",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "StorageL3",
+          "Version": "v1",
+          "Url": "https://localhost:7192/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
 }
